@@ -2,6 +2,7 @@ package com.example.healthcareapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ManagerActivity extends AppCompatActivity {
+public class ManagerActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

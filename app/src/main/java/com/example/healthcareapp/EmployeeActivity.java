@@ -1,5 +1,6 @@
 package com.example.healthcareapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EmployeeActivity extends AppCompatActivity {
+public class EmployeeActivity extends Activity {
 
     private static final int REQUEST_IMAGE_CAPTURE =1;
     ImageView imageView;
