@@ -32,7 +32,11 @@ public class EmployeeActivity extends AppCompatActivity {
     }
 
     public void btnSave(View view) {
+
+
         EditText company = findViewById(R.id.companyName);
+
+
         EditText name = findViewById(R.id.employeeName);
         EditText phone = findViewById(R.id.phoneNumber);
         EditText email = findViewById(R.id.emailName);
@@ -84,6 +88,9 @@ public class EmployeeActivity extends AppCompatActivity {
 
 
     }
+
+
+
     private void selectImage() {
         Intent takeImageIntent = ImagePicker.getPickImageIntent(this);
         if (takeImageIntent.resolveActivity(this.getPackageManager()) != null) {
@@ -96,7 +103,7 @@ public class EmployeeActivity extends AppCompatActivity {
         Bitmap bitmap = ImagePicker.getBitmapFromResult(this, resultCode, data);
         if (null != bitmap && resultCode == RESULT_OK) {
             imageView=findViewById(R.id.Image);
-            imageView.setImageBitmap(bitmap);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 360, 480, false));
         }
     }
 

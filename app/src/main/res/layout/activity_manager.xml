@@ -18,6 +18,7 @@
             android:padding="5dp"
             android:text="@string/company1"
             android:textSize="18sp"
+            android:layout_margin="16dp"
             android:textStyle="bold">
 
         </TextView>
@@ -26,23 +27,27 @@
             android:id="@+id/companyHR1"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
+            android:layout_margin="16dp"
             android:hint="@string/company1"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textSize="18sp"
-            android:textStyle="bold"></EditText>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/nameHR"
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="@string/name"
+
             android:textSize="18sp"
             android:textStyle="bold">
 
         </TextView>
 
         <EditText
+            android:layout_margin="16dp"
             android:id="@+id/nameHR1"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
@@ -50,10 +55,11 @@
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:textSize="18sp"
-            android:textStyle="bold"></EditText>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/emailHR"
+            android:layout_margin="16dp"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:text="@string/e_mail_id"
@@ -64,6 +70,7 @@
 
         <EditText
             android:id="@+id/emailHR1"
+            android:layout_margin="16dp"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:autofillHints="no"
@@ -78,8 +85,10 @@
             android:id="@+id/Submit"
             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:layout_margin="16dp"
             android:onClick="btnSubmit"
             android:text="@string/Submit"
+            android:layout_gravity="center"
             android:textSize="18sp"
             android:textStyle="bold">
 
