@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -18,6 +19,10 @@ import android.widget.EditText;
 public class FragmentLoginEmployee extends Fragment {
     public static final String EXTRA_MESSAGE =
             "com.example.healthcareapp.extra.EMAIL";
+    String email1="nsbrocks@gmail.com";
+    String email2="rohitrathi2411@gmail.com";
+    String email3="agrawaldhairy@gmail.com";
+    String password1="12345678";
     public FragmentLoginEmployee() {
         // Required empty public constructor
     }
@@ -38,13 +43,24 @@ public class FragmentLoginEmployee extends Fragment {
                 Intent i = new Intent(getActivity(),EmployeeActivity.class);
 
 
-                final String emailString=email.getText().toString();
-                final String passwordString=password.getText().toString();
+                String emailString=email.getText().toString();
+                String passwordString=password.getText().toString();
+                String stringemail=emailString;
+                String stringpass=passwordString;
+                Boolean b=(email1.equals(stringemail)||email2.equals(stringemail)||email3.equals(stringemail));
+                Boolean b2=(password1.equals(stringpass));
+                if (b && b2)
+                {
+                    i.putExtra("email", emailString);
+                    i.putExtra("password",passwordString);
+                    startActivity(i);
 
 
-                i.putExtra("email", emailString);
-                i.putExtra("password",passwordString);
-                startActivity(i);
+                }
+                else {
+                    Toast.makeText(getActivity(), "Wrong Input Commands", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

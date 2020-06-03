@@ -21,6 +21,7 @@ public class ManagerActivity extends AppCompatActivity {
         String message = intent.getStringExtra("email");
         email.setText(message, TextView.BufferType.EDITABLE);
     }
+
     public void btnSubmit(View view){
         String toastText = "Accessing the database";
         Toast.makeText(this,toastText,Toast.LENGTH_LONG).show();
