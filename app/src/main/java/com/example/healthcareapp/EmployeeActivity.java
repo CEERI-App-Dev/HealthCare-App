@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,13 +23,20 @@ public class EmployeeActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
+        EditText email = findViewById(R.id.emailName);
+
+        Intent intent=getIntent();
+        String message = intent.getStringExtra(FragmentLoginEmployee.EXTRA_MESSAGE);
+        email.setText(message, TextView.BufferType.EDITABLE);
+
     }
 
     public void btnSave(View view) {
         EditText company = findViewById(R.id.companyName);
         EditText name = findViewById(R.id.employeeName);
-        EditText email = findViewById(R.id.emailName);
         EditText phone = findViewById(R.id.phoneNumber);
+        EditText email = findViewById(R.id.emailName);
+
         EditText visit = findViewById(R.id.visitPlace);
         EditText temperature = findViewById(R.id.temperatureFarenheit);
         RadioGroup symptoms = findViewById(R.id.symptomsRadio);
