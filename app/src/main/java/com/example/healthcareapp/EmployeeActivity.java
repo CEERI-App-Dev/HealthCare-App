@@ -26,7 +26,7 @@ public class EmployeeActivity extends AppCompatActivity {
         EditText email = findViewById(R.id.emailName);
 
         Intent intent=getIntent();
-        String message = intent.getStringExtra(FragmentLoginEmployee.EXTRA_MESSAGE);
+        String message = intent.getStringExtra("email");
         email.setText(message, TextView.BufferType.EDITABLE);
 
     }

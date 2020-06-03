@@ -42,7 +42,7 @@ public class FragmentLoginEmployee extends Fragment {
                 final String passwordString=password.getText().toString();
 
 
-                i.putExtra(EXTRA_MESSAGE, emailString);
+                i.putExtra("email", emailString);
                 i.putExtra("password",passwordString);
                 startActivity(i);
             }
