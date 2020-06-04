@@ -7,7 +7,7 @@
     <string name="name">Employee Name:</string>
     <string name="e_mail_id">E-mail Id:</string>
     <string name="official_e_mail_address">Official E-mail address</string>
-    <string name="no">NO</string>
+    <string name="no">No</string>
     <string name="did_you_visit_any_other_company_lab_or_a_containment_or_red_zone">Did you visit any other company,lab or a containment or red zone?</string>
     <string name="type_yes_or_no_if_yes_mention_the_area_you_visited">Type Yes or No. If Yes, mention the area you visited</string>
     <string name="any_other_relevant_information">Any other relevant information:</string>
@@ -15,7 +15,7 @@
     <string name="country_s_name">Country\'s Name</string>
     <string name="your_body_temperature_today">Your Body Temperature today:</string>
     <string name="type_yes_or_no">Type Yes or No</string>
-    <string name="in_fahrenheit">in Fahrenheit</string>
+    <string name="in_fahrenheit">In Fahrenheit</string>
     <string name="employee_login">Employee Login:</string>
     <string name="welcome_to_healthcare_app">Welcome to HealthCare App</string>
     <string name="hr_manager_login">HR/ Manager Login:</string>

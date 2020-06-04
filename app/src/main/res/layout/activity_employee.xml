@@ -32,21 +32,27 @@
             <TextView
                 android:id="@+id/Company"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/company"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
 
             <EditText
                 android:id="@+id/companyName"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_width="0dp"
+                android:layout_marginRight="16dp"
+                android:layout_height="50dp"
                 android:autofillHints="Enter Company"
                 android:hint="@string/company1"
+                app:layout_constraintRight_toRightOf="parent"
                 android:inputType="textCapWords"
+                android:layout_marginLeft="16dp"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Company" />
@@ -55,44 +61,54 @@
             <TextView
                 android:id="@+id/Employee"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/name"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="16dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/companyName" />
 
             <EditText
                 android:id="@+id/employeeName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="@dimen/Text_Height"
                 android:autofillHints="Enter Name"
                 android:hint="@string/name1"
+                android:layout_marginLeft="16dp"
                 android:inputType="textPersonName"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Employee" />
+                app:layout_constraintTop_toBottomOf="@id/Employee"
+                app:layout_constraintRight_toRightOf="parent"/>
 
 
             <TextView
                 android:id="@+id/Email"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/e_mail_id"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="16dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/employeeName" />
 
             <EditText
                 android:id="@+id/emailName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_height="@dimen/Text_Height"
                 android:hint="@string/official_e_mail_address"
                 android:inputType="textEmailAddress"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Email" />
 
@@ -100,23 +116,28 @@
             <TextView
                 android:id="@+id/Phone"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/phone_number"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
+                android:layout_marginLeft="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/emailName" />
 
             <EditText
                 android:id="@+id/phoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_width="148dp"
+                android:layout_height="54dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:ems="10"
                 android:hint="@string/registered_phone_number"
                 android:importantForAutofill="no"
                 android:inputType="phone"
-                android:textSize="14sp"
+
+                android:textSize="11sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Phone" />
 
@@ -126,8 +147,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/Employee_Padding"
+                android:layout_margin="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="@string/are_you_having_cough_or_fever_or_flu_in_the_past_14_days"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
@@ -136,6 +159,7 @@
             <RadioGroup
                 android:id="@+id/symptomsRadio"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
@@ -144,12 +168,14 @@
                 <RadioButton
                     android:id="@+id/yesSymptom"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
                     android:id="@+id/noSymptom"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/no" />
             </RadioGroup>
@@ -159,9 +185,11 @@
                 android:id="@+id/Absence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/are_you_currently_serving_any_leave_of_absence_or_work_from_home"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/symptomsRadio">
@@ -172,6 +200,7 @@
                 android:id="@+id/absenceRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Absence">
@@ -179,11 +208,13 @@
                 <RadioButton
                     android:id="@+id/yesAbsence"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
                     android:id="@+id/noAbsence"
+                    android:textSize="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/no" />
@@ -195,8 +226,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/Employee_Padding"
+                android:textSize="12sp"
+                android:layout_margin="16dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="@string/did_you_travel_overseas_in_the_last_14_days"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/absenceRadio">
@@ -207,6 +240,7 @@
                 android:id="@+id/overseasRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Overseas">
@@ -214,12 +248,14 @@
                 <RadioButton
                     android:id="@+id/yesOverseas"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
                     android:id="@+id/noOverseas"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/no" />
             </RadioGroup>
@@ -228,18 +264,23 @@
             <TextView
                 android:id="@+id/Visit"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_height="32dp"
+                android:textSize="12sp"
+                android:layout_margin="16dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/if_yes_then_where_did_you_visit"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/overseasRadio" />
 
             <EditText
                 android:id="@+id/visitPlace"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/Text_Height"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintRight_toRightOf="parent"
                 android:autofillHints=""
                 android:hint="@string/country_s_name"
                 android:inputType="textCapWords"
@@ -252,9 +293,11 @@
                 android:id="@+id/Contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/have_you_ever_came_in_contact_with_a_covid_patient"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/visitPlace" />
@@ -264,16 +307,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Contact">
 
                 <RadioButton
                     android:id="@+id/yesContact"
                     android:layout_width="wrap_content"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
+                    android:textSize="12dp"
                     android:id="@+id/noContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -284,20 +330,25 @@
             <TextView
                 android:id="@+id/Temperature"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_height="32dp"
+                android:layout_marginLeft="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/your_body_temperature_today"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contactRadio" />
 
             <EditText
                 android:id="@+id/temperatureFarenheit"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/Text_Height"
                 android:hint="@string/in_fahrenheit"
                 android:importantForAutofill="no"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintRight_toRightOf="parent"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -307,10 +358,13 @@
             <TextView
                 android:id="@+id/Containment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/did_you_visit_any_other_company_lab_or_a_containment_or_red_zone"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/temperatureFarenheit" />
@@ -320,16 +374,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Containment">
 
                 <RadioButton
+                    android:textSize="12dp"
                     android:id="@+id/yesContainment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
+                    android:textSize="12dp"
                     android:id="@+id/noContainment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -340,10 +397,12 @@
             <TextView
                 android:id="@+id/relevant"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/Text_Height"
+                android:layout_marginLeft="16dp"
+                android:layout_height="32dp"
                 android:padding="@dimen/Employee_Padding"
                 android:text="@string/any_other_relevant_information"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/containmentRadio">
@@ -352,12 +411,15 @@
 
             <EditText
                 android:id="@+id/releventInfo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginLeft="16dp"
                 android:layout_height="@dimen/Text_Height"
                 android:hint="@string/your_response_is_valuable_to_us"
                 android:importantForAutofill="no"
                 android:inputType="textCapSentences"
                 android:textSize="18sp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relevant">
 
@@ -367,6 +429,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/Image"
+
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -377,6 +440,8 @@
                 android:text="Choose Image"
                 android:onClick="btnAddImage"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:background="@drawable/btn_rounded"
+                android:textColor="@color/colorAccent"
                 android:layout_margin="8dp"
                 android:textSize="12dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -385,11 +450,13 @@
 
             <Button
                 android:id="@+id/Save"
-                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:onClick="btnSave"
+                style="@style/Widget.MaterialComponents.Button"
+                android:background="@drawable/btn_rounded"
+                android:textColor="@color/colorPrimary"
                 android:text="@string/submitform"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addImage"

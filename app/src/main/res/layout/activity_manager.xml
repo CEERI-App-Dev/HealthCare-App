@@ -90,6 +90,9 @@
             android:onClick="btnSubmit"
             android:text="@string/Submit"
             android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.Button"
+            android:background="@drawable/btn_rounded"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold">
 
