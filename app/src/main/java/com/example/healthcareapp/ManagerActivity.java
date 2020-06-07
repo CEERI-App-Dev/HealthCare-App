@@ -11,16 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class ManagerActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-        EditText email=findViewById(R.id.emailHR1);
         Intent intent=getIntent();
         String message = intent.getStringExtra("email");
-        email.setText(message, TextView.BufferType.EDITABLE);
+        TextInputEditText emailHR=findViewById(R.id.emailHRNameEdit);
+        emailHR.setText(message);
+
     }
 
     public void btnSubmit(View view){

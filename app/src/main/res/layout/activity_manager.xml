@@ -11,80 +11,59 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
-        <TextView
-            android:id="@+id/companyHR"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:padding="5dp"
-            android:text="@string/company1"
-            android:textSize="18sp"
-            android:layout_margin="16dp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <EditText
-            android:id="@+id/companyHR1"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_margin="16dp"
-            android:hint="@string/company1"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/nameHR"
-            android:layout_width="fill_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/companyName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/name"
+            android:hint="Company Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            android:textSize="18sp"
-            android:textStyle="bold">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/companyNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        </TextView>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hrName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:id="@+id/nameHR1"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:hint="@string/name1"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:hint="Your Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <TextView
-            android:id="@+id/emailHR"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailHRName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:text="@string/e_mail_id"
-            android:textSize="18sp"
-            android:textStyle="bold">
+            android:hint="Email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </TextView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailHRNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
-            android:id="@+id/emailHR1"
-            android:layout_margin="16dp"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:autofillHints="no"
-            android:hint="@string/official_e_mail_address"
-            android:inputType="textEmailAddress"
-            android:textSize="18sp"
-            android:textStyle="bold">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </EditText>
+
+
 
         <Button
             android:id="@+id/Submit"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_margin="16dp"
             android:onClick="btnSubmit"
@@ -93,8 +72,7 @@
             style="@style/Widget.MaterialComponents.Button"
             android:background="@drawable/btn_rounded"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold">
+            android:textSize="18sp">
 
         </Button>
 

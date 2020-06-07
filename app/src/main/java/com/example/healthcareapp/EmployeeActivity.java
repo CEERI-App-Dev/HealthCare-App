@@ -18,11 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EmployeeActivity extends Activity {
 
+
+
     private static final int REQUEST_IMAGE_CAPTURE =1;
     ImageView imageView;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_employee);
         EditText email = findViewById(R.id.emailName);
 
@@ -33,15 +36,16 @@ public class EmployeeActivity extends Activity {
     }
 
     public void btnSave(View view) {
-
-
+        imageView=findViewById(R.id.Image);
+        //used to check if a field added by user is empty
+        // if (TextUtils.isEmpty(company.getText()))
+        //with RadioGroup buttons we use getCheckedRadioButtonId() function
         EditText company = findViewById(R.id.companyName);
 
 
         EditText name = findViewById(R.id.employeeName);
         EditText phone = findViewById(R.id.phoneNumber);
         EditText email = findViewById(R.id.emailName);
-
         EditText visit = findViewById(R.id.visitPlace);
         EditText temperature = findViewById(R.id.temperatureFarenheit);
         RadioGroup symptoms = findViewById(R.id.symptomsRadio);
@@ -49,12 +53,6 @@ public class EmployeeActivity extends Activity {
         RadioGroup overseas = findViewById(R.id.overseasRadio);
         RadioGroup contact = findViewById(R.id.contactRadio);
         RadioGroup containment = findViewById(R.id.containmentRadio);
-        imageView=findViewById(R.id.Image);
-
-        //used to check if a field added by user is empty
-        // if (TextUtils.isEmpty(company.getText()))
-
-        //with RadioGroup buttons we use getCheckedRadioButtonId() function
         if (TextUtils.isEmpty(company.getText())){
             company.setError("Company Name is required");
         }
