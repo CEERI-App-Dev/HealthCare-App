@@ -28,118 +28,93 @@
             android:layout_height="wrap_content"
             tools:context=".EmployeeActivity">
 
-
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/Company"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/company"
-                android:textSize="12sp"
-                android:layout_marginLeft="16dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="16dp" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Company Name"
+                app:startIconDrawable="@android:drawable/sym_contact_card"
+                >
 
-            <EditText
-                android:id="@+id/companyName"
-                android:layout_width="0dp"
-                android:layout_marginRight="16dp"
-                android:layout_height="50dp"
-                android:autofillHints="Enter Company"
-                android:hint="@string/company1"
-                app:layout_constraintRight_toRightOf="parent"
-                android:inputType="textCapWords"
-                android:layout_marginLeft="16dp"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Company" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/companyName"
+                    android:inputType="textPersonName"/>
 
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/Employee"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/name"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/companyName" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Company"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Employee Name"
+                app:startIconDrawable="@android:drawable/star_on"
+                >
 
-            <EditText
-                android:id="@+id/employeeName"
-                android:layout_width="0dp"
-                android:layout_marginRight="16dp"
-                android:layout_height="@dimen/Text_Height"
-                android:autofillHints="Enter Name"
-                android:hint="@string/name1"
-                android:layout_marginLeft="16dp"
-                android:inputType="textPersonName"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Employee"
-                app:layout_constraintRight_toRightOf="parent"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/employeeName"
+                    android:inputType="textPersonName"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/Email"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/e_mail_id"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/employeeName" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Employee"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Email ID:"
+                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                >
 
-            <EditText
-                android:id="@+id/emailName"
-                android:layout_width="0dp"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_height="@dimen/Text_Height"
-                android:hint="@string/official_e_mail_address"
-                android:inputType="textEmailAddress"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Email" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emailName"
+                    android:inputType="textEmailAddress"/>
 
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/Phone"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/phone_number"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailName" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Phone Number:"
+                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
+                >
 
-            <EditText
-                android:id="@+id/phoneNumber"
-                android:layout_width="148dp"
-                android:layout_height="54dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:ems="10"
-                android:hint="@string/registered_phone_number"
-                android:importantForAutofill="no"
-                android:inputType="phone"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phoneNumber"
+                    android:inputType="phone"/>
 
-                android:textSize="11sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
 
 
             <TextView
@@ -153,7 +128,7 @@
                 android:text="@string/are_you_having_cough_or_fever_or_flu_in_the_past_14_days"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/Phone" />
 
 
             <RadioGroup
@@ -326,33 +301,30 @@
                     android:text="@string/no" />
             </RadioGroup>
 
-
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/Temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginLeft="16dp"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/your_body_temperature_today"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contactRadio" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Temperature"
+                app:suffixText="F"
+                app:startIconDrawable="@android:drawable/ic_menu_upload_you_tube"
+                app:layout_constraintTop_toBottomOf="@+id/contactRadio"
+                >
 
-            <EditText
-                android:id="@+id/temperatureFarenheit"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/Text_Height"
-                android:hint="@string/in_fahrenheit"
-                android:importantForAutofill="no"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintRight_toRightOf="parent"
-                android:inputType="numberDecimal"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Temperature" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/temparatureFarenheit"
+                    android:inputType="numberDecimal"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
 
             <TextView
@@ -363,11 +335,12 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/did_you_visit_any_other_company_lab_or_a_containment_or_red_zone"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/temperatureFarenheit" />
+                app:layout_constraintTop_toBottomOf="@+id/Temperature" />
 
             <RadioGroup
                 android:id="@+id/containmentRadio"

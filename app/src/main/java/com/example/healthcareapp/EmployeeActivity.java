@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class EmployeeActivity extends Activity {
 
 
@@ -41,13 +43,11 @@ public class EmployeeActivity extends Activity {
         // if (TextUtils.isEmpty(company.getText()))
         //with RadioGroup buttons we use getCheckedRadioButtonId() function
         EditText company = findViewById(R.id.companyName);
-
-
         EditText name = findViewById(R.id.employeeName);
         EditText phone = findViewById(R.id.phoneNumber);
         EditText email = findViewById(R.id.emailName);
         EditText visit = findViewById(R.id.visitPlace);
-        EditText temperature = findViewById(R.id.temperatureFarenheit);
+        EditText temperature = findViewById(R.id.temparatureFarenheit);
         RadioGroup symptoms = findViewById(R.id.symptomsRadio);
         RadioGroup absence = findViewById(R.id.absenceRadio);
         RadioGroup overseas = findViewById(R.id.overseasRadio);
@@ -87,7 +87,6 @@ public class EmployeeActivity extends Activity {
 
 
     }
-
 
 
     private void selectImage() {
