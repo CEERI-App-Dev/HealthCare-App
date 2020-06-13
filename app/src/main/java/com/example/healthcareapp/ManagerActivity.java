@@ -38,9 +38,11 @@ public class ManagerActivity extends Activity {
         ListView list = (ListView) findViewById(R.id.listView);
         EditText company = findViewById(R.id.companyNameEdit);
         String companyName = company.getText().toString();
+        Intent intent=new Intent(this,DisplayDataActivity.class);
+        intent.putExtra("companyName",companyName);
         DataBaseHelper dataBaseHelper = new DataBaseHelper(ManagerActivity.this);
         List<CustomerModel> everyone = dataBaseHelper.getEveryone(companyName);
-
+        startActivity(intent);
         ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(ManagerActivity.this, android.R.layout.simple_list_item_1, everyone);
         list.setAdapter(customerArrayAdapter);
 
