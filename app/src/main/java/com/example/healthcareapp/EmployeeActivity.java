@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,16 +17,27 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeActivity extends Activity {
     private static final int REQUEST_IMAGE_CAPTURE =1;
     ImageView imageView;
 
-
-
+    FirebaseFirestore mFirebase = FirebaseFirestore.getInstance();
+    private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +47,7 @@ public class EmployeeActivity extends Activity {
         String message = intent.getStringExtra("email");
         final EditText email = findViewById(R.id.emailName);
         email.setText(message, TextView.BufferType.EDITABLE);
-
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(EmployeeActivity.this);
 
     }
 
@@ -103,6 +115,7 @@ public class EmployeeActivity extends Activity {
         EditText temperature = findViewById(R.id.temparatureFarenheit);
         Double temp = Double.parseDouble(temperature.getText().toString());
 
+        // SQLite database addition code.
         CustomerModel customerModel = new CustomerModel(1,company.getText().toString(),name.getText().toString(),
                 email.getText().toString(),phone.getText().toString(),symptoms1.isChecked(),absence1.isChecked(),
                 overseas1.isChecked(),contact1.isChecked(),temp,containment1.isChecked());
@@ -112,6 +125,34 @@ public class EmployeeActivity extends Activity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(EmployeeActivity.this);
         boolean success = dataBaseHelper.addOne(customerModel);
         Toast.makeText(EmployeeActivity.this,"Success="+success,Toast.LENGTH_SHORT).show();
+
+        // Firebase data addition code.
+        Map<String, Object> users = new HashMap<>();
+        users.put("company",company.getText().toString());
+        users.put("name",name.getText().toString());
+        users.put("email",email.getText().toString());
+        users.put("phone",phone.getText().toString());
+        users.put("symptoms",symptoms1.isChecked());
+        users.put("absence",absence1.isChecked());
+        users.put("overseas",overseas1.isChecked());
+        users.put("contact",contact1.isChecked());
+        users.put("temperature",temp);
+        users.put("visit",containment1.isChecked());
+
+        mFirebase.collection("employees")
+                .add(users)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("success","DocumentSnapshot added with ID: "+documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("failure","Error adding document",e);
+                    }
+                });
 
 
 
