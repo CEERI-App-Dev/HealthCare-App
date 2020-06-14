@@ -24,23 +24,24 @@ public class ManagerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         String message = intent.getStringExtra("email");
-        TextInputEditText emailHR=findViewById(R.id.emailHRNameEdit);
+        TextInputEditText emailHR = findViewById(R.id.emailHRNameEdit);
         emailHR.setText(message);
 
     }
 
-    public void btnSubmit(View view){
+    public void btnSubmit(View view) {
         String toastText = "Accessing the database";
-        Toast.makeText(this,toastText,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, toastText, Toast.LENGTH_LONG).show();
         // will later change it to Recycler View. Recycler View is more efficient and advanced.
-        ListView list = findViewById(R.id.listView);
-
+        ListView list = (ListView) findViewById(R.id.listView);
+        EditText company = findViewById(R.id.companyNameEdit);
+        String companyName = company.getText().toString();
         DataBaseHelper dataBaseHelper = new DataBaseHelper(ManagerActivity.this);
-        List<CustomerModel> everyone = dataBaseHelper.getEveryone();
+        List<CustomerModel> everyone = dataBaseHelper.getEveryone(companyName);
 
-        ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(ManagerActivity.this,android.R.layout.simple_list_item_1,everyone);
+        ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(ManagerActivity.this, android.R.layout.simple_list_item_1, everyone);
         list.setAdapter(customerArrayAdapter);
 
         //Toast.makeText(ManagerActivity.this,everyone.toString(),Toast.LENGTH_LONG).show();

@@ -435,6 +435,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/addImage"
                 app:layout_constraintRight_toRightOf="parent"/>
 
+            <Button
+                android:id="@+id/Add"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/btn_rounded"
+                android:onClick="addToDatabase"
+                android:text="add to database"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Save" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

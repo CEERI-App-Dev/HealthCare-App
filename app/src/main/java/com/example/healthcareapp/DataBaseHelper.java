@@ -33,7 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // this is called the first time a database is accessed. There should be code in here to create a new database.
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement= "CREATE TABLE " + EMPLOYEE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_COMPANY + " TEXT, " + COLUMN_NAME + " TEXT," + COLUMN_EMAIL + " TEXT," + COLUMN_PHONE + " TEXT," + COLUMN_SYMPTOMS + " BOOLEAN, " + COLUMN_ABSENCE + " BOOLEAN, " + COLUMN_OVERSEAS + " BOOLEAN, " + COLUMN_CONTACT + " BOOLEAN," + COLUMN_TEMPERATURE + " DOUBLE, " + COLUMN_CONTAINMENT + " BOOLEAN )";
+        String createTableStatement = "CREATE TABLE " + EMPLOYEE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_COMPANY + " TEXT, " + COLUMN_NAME + " TEXT," + COLUMN_EMAIL + " TEXT," + COLUMN_PHONE + " TEXT," + COLUMN_SYMPTOMS + " BOOLEAN, " + COLUMN_ABSENCE + " BOOLEAN, " + COLUMN_OVERSEAS + " BOOLEAN, " + COLUMN_CONTACT + " BOOLEAN," + COLUMN_TEMPERATURE + " DOUBLE, " + COLUMN_CONTAINMENT + " BOOLEAN )";
 
         db.execSQL(createTableStatement);
     }
@@ -44,36 +44,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOne(CustomerModel customerModel){
+    public boolean addOne(CustomerModel customerModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_COMPANY,customerModel.getCompany());
-        cv.put(COLUMN_NAME,customerModel.getName());
-        cv.put(COLUMN_EMAIL,customerModel.getEmail());
-        cv.put(COLUMN_PHONE,customerModel.getPhone());
-        cv.put(COLUMN_SYMPTOMS,customerModel.isSymptoms());
-        cv.put(COLUMN_ABSENCE,customerModel.isAbsence());
-        cv.put(COLUMN_OVERSEAS,customerModel.isOverseas());
-        cv.put(COLUMN_CONTACT,customerModel.isContact());
-        cv.put(COLUMN_TEMPERATURE,customerModel.getTemp());
-        cv.put(COLUMN_CONTAINMENT,customerModel.isVisit());
+        cv.put(COLUMN_COMPANY, customerModel.getCompany());
+        cv.put(COLUMN_NAME, customerModel.getName());
+        cv.put(COLUMN_EMAIL, customerModel.getEmail());
+        cv.put(COLUMN_PHONE, customerModel.getPhone());
+        cv.put(COLUMN_SYMPTOMS, customerModel.isSymptoms());
+        cv.put(COLUMN_ABSENCE, customerModel.isAbsence());
+        cv.put(COLUMN_OVERSEAS, customerModel.isOverseas());
+        cv.put(COLUMN_CONTACT, customerModel.isContact());
+        cv.put(COLUMN_TEMPERATURE, customerModel.getTemp());
+        cv.put(COLUMN_CONTAINMENT, customerModel.isVisit());
 
         long insert = db.insert(EMPLOYEE_TABLE, null, cv);
-        if (insert == -1){
+        if (insert == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
-    public List<CustomerModel> getEveryone(){
+    public List<CustomerModel> getEveryone(String company) {
         List<CustomerModel> returnList = new ArrayList<>();
         // get data from database
-
-        String queryString = "SELECT * FROM "+EMPLOYEE_TABLE;
+        String queryString = "SELECT * FROM " + EMPLOYEE_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString,null);
-        if (cursor.moveToFirst()){
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
             // loop through cursor(result set) and create new employee objects. Put them into the return list.
             do {
                 int employeeID = cursor.getInt(0);
@@ -88,12 +87,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 Double temp = cursor.getDouble(9);
                 Boolean visit = cursor.getInt(10) == 1 ? true : false;
 
-                CustomerModel newCustomer = new CustomerModel(employeeID,companyName,employeeName,
-                        email,phone,symptoms,absence,overseas,contact,temp,visit);
+                CustomerModel newCustomer = new CustomerModel(employeeID, companyName, employeeName,
+                        email, phone, symptoms, absence, overseas, contact, temp, visit);
                 returnList.add(newCustomer);
 
-            }while (cursor.moveToNext());
-        }else{
+            } while (cursor.moveToNext());
+        } else {
             // failure. do not add anything to the list.
         }
         // close both the cursor and database when done.
