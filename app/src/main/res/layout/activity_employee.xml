@@ -367,36 +367,30 @@
             </RadioGroup>
 
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:id="@+id/relevant"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_height="32dp"
-                android:padding="@dimen/Employee_Padding"
-                android:text="@string/any_other_relevant_information"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/containmentRadio">
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Any Suggestions"
+                app:startIconDrawable="@android:drawable/ic_menu_upload_you_tube"
+                app:layout_constraintTop_toBottomOf="@+id/containmentRadio"
+                >
 
-            </TextView>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relevantInfo"
+                    android:inputType="textMultiLine"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/releventInfo"
-                android:layout_width="0dp"
-                android:layout_marginLeft="16dp"
-                android:layout_height="@dimen/Text_Height"
-                android:hint="@string/your_response_is_valuable_to_us"
-                android:importantForAutofill="no"
-                android:inputType="textCapSentences"
-                android:textSize="18sp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/relevant">
 
-            </EditText>
+
+
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -405,49 +399,43 @@
 
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
-
-            <Button
-                android:id="@+id/addImage"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose Image"
-                android:onClick="btnAddImage"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:background="@drawable/btn_rounded"
-                android:textColor="@color/colorAccent"
-                android:layout_margin="8dp"
-                android:textSize="12dp"
+                android:orientation="horizontal"
+                android:layoutDirection="rtl"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/releventInfo"/>
+                app:layout_constraintTop_toBottomOf="@+id/relevant">
+                <Button
+                    android:id="@+id/Add"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_rounded"
+                    android:onClick="addToDatabase"
+                    android:text="add to database"
+                    android:textColor="@color/colorPrimary"
+                    />
+                <Button
+                    android:id="@+id/addImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose Image"
 
-            <Button
-                android:id="@+id/Save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="btnSave"
-                style="@style/Widget.MaterialComponents.Button"
-                android:background="@drawable/btn_rounded"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/submitform"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addImage"
-                app:layout_constraintRight_toRightOf="parent"/>
+                    android:onClick="btnAddImage"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:background="@drawable/btn_rounded"
+                    android:textColor="@color/colorAccent"
+                    android:layout_margin="8dp"
+                    android:textSize="12dp"
+                    />
 
-            <Button
-                android:id="@+id/Add"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/btn_rounded"
-                android:onClick="addToDatabase"
-                android:text="add to database"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Save" />
+
+
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
