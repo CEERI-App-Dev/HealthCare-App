@@ -150,7 +150,7 @@ public class ManagerActivity extends Activity {
 
        //use a recycler view
         listView = findViewById(R.id.listViewFirestore);
-        List<EmployeeModel> data = dataBaseHelper.getFirestore();
+        List<CustomerModel> data = dataBaseHelper.getFirestore();
         arrayAdapter = new ArrayAdapter(ManagerActivity.this,android.R.layout.simple_list_item_1,data);
         listView.setAdapter(arrayAdapter);
     }

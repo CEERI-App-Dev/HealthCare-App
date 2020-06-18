@@ -35,6 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TEMPERATURE = "TEMPERATURE";
     public static final String COLUMN_CONTAINMENT = "CONTAINMENT";
     public static final String COLUMN_ID = "ID";
+    List<CustomerModel> returnList= new ArrayList<>();
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "employee.db", null, 1);
@@ -112,37 +113,51 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public List getFirestore(){
-        List<EmployeeModel> returnList= new ArrayList<>();
+    public List<CustomerModel> getFirestore(){
+
         //final Map<String, Object>[] employees = new Map<String, Object>[1];
-        final EmployeeModel employeeModel = new EmployeeModel();
+        EmployeeModel employeeModel = new EmployeeModel();
         mFirebase.collection("employees")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-
+                            int i=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                               //employeeModel[0] = (EmployeeModel) document.getData();
                                 Log.d("reading successful", document.getId() + " => " + document.getData());
-                                employeeModel.getCompany(document.getString("company"));
-                                employeeModel.getName(document.getString("name"));
-                                employeeModel.getEmail(document.getString("email"));
-                                employeeModel.getPhone(document.getString("phone"));
-                                employeeModel.isSymptoms(document.getBoolean("symptoms"));
-                                employeeModel.isAbsence(document.getBoolean("absence"));
-                                employeeModel.isOverseas(document.getBoolean("overseas"));
-                                employeeModel.isContact(document.getBoolean("contact"));
-                                employeeModel.getTemperature(document.getDouble("temperature"));
-                                employeeModel.setVisit(document.getBoolean("visit"));
+                                int employeeID = i;
+                                String companyName = document.getString("company");
+                                String employeeName = document.getString("company");
+                                String email = document.getString("email");
+                                String phone = document.getString("phone");
+                                Boolean symptoms = document.getBoolean("symptoms");
+                                Boolean absence = document.getBoolean("absence");
+                                Boolean overseas = document.getBoolean("overseas");
+                                Boolean contact = document.getBoolean("contact");
+                                Double temp = document.getDouble("temperature");
+                                Boolean visit = document.getBoolean("visit");
+//                                employeeModel.getCompany(document.getString("company"));
+//                                employeeModel.getName(document.getString("company"));
+//                                employeeModel.getEmail(document.getString("email"));
+//                                employeeModel.getPhone(document.getString("phone"));
+//                                employeeModel.isSymptoms(document.getBoolean("symptoms"));
+//                                employeeModel.isAbsence(document.getBoolean("absence"));
+//                                employeeModel.isOverseas(document.getBoolean("overseas"));
+//                                employeeModel.isContact(document.getBoolean("contact"));
+//                                employeeModel.getTemperature(document.getDouble("temperature"));
+//                                employeeModel.setVisit(document.getBoolean("visit"));
+                                CustomerModel newCustomer = new CustomerModel(employeeID, companyName, employeeName,
+                                        email, phone, symptoms, absence, overseas, contact, temp, visit);
+                                i++;
+                                returnList.add(newCustomer);
                             }
                         } else {
                             Log.w("unable to read", "Error getting documents.", task.getException());
                         }
                     }
                 });
-        returnList.add(employeeModel);
         return returnList;
 
     }
