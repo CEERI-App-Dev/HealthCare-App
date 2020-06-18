@@ -42,6 +42,7 @@ public class ManagerActivity extends Activity {
     DataBaseHelper dataBaseHelper = new DataBaseHelper(ManagerActivity.this);
     ArrayAdapter arrayAdapter ;
     ListView listView ;
+    String companyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class ManagerActivity extends Activity {
         String toastText = "Accessing the database";
         Toast.makeText(this, toastText, Toast.LENGTH_LONG).show();
         EditText company = findViewById(R.id.companyNameEdit);
-        String companyName = company.getText().toString();
+        companyName = company.getText().toString();
         Intent intent = new Intent(this, DisplayDataActivity.class);
         intent.putExtra("companyName", companyName);
         startActivity(intent);
@@ -150,7 +151,7 @@ public class ManagerActivity extends Activity {
 
        //use a recycler view
         listView = findViewById(R.id.listViewFirestore);
-        List<CustomerModel> data = dataBaseHelper.getFirestore();
+        List<CustomerModel> data = dataBaseHelper.getFirestore(companyName);
         arrayAdapter = new ArrayAdapter(ManagerActivity.this,android.R.layout.simple_list_item_1,data);
         listView.setAdapter(arrayAdapter);
     }

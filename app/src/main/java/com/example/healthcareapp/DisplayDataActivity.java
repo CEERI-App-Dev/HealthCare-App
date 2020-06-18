@@ -17,6 +17,7 @@ import java.util.List;
 
 public class DisplayDataActivity extends Activity {
     DataBaseHelper dataBaseHelper = new DataBaseHelper(DisplayDataActivity.this);
+    String companyName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +25,9 @@ public class DisplayDataActivity extends Activity {
         ListView list = (ListView) findViewById(R.id.listView1);
 
         Intent intent=getIntent();
-        String companyName=intent.getStringExtra("companyName");
-        List<CustomerModel> everyone = dataBaseHelper.getFirestore();
+
+        companyName=intent.getStringExtra("companyName");
+        List<CustomerModel> everyone = dataBaseHelper.getFirestore(companyName);
         everyone=dataBaseHelper.getFirestoreFinal();
 
         ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(DisplayDataActivity.this, android.R.layout.simple_list_item_1, everyone);
@@ -36,7 +38,7 @@ public class DisplayDataActivity extends Activity {
 
     public void btnShow(View view) {
         ListView list = (ListView) findViewById(R.id.listView1);
-        List<CustomerModel> everyone = dataBaseHelper.getFirestore();
+        List<CustomerModel> everyone = dataBaseHelper.getFirestore(companyName);
         ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(DisplayDataActivity.this, android.R.layout.simple_list_item_1, everyone);
         list.setAdapter(customerArrayAdapter);
     }

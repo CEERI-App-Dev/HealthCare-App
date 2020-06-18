@@ -113,7 +113,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public List<CustomerModel> getFirestore(){
+    public List<CustomerModel> getFirestore(final String company){
 
         //final Map<String, Object>[] employees = new Map<String, Object>[1];
         EmployeeModel employeeModel = new EmployeeModel();
@@ -129,6 +129,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                                 Log.d("reading successful", document.getId() + " => " + document.getData());
                                 int employeeID = i;
                                 String companyName = document.getString("company");
+                                if(company.equalsIgnoreCase(companyName)){
                                 String employeeName = document.getString("company");
                                 String email = document.getString("email");
                                 String phone = document.getString("phone");
@@ -153,7 +154,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                                 i++;
                                 returnList.add(newCustomer);
                                 Log.d("OKAY",returnList.toString());
-                                returnListFinal=returnList;
+                                returnListFinal=returnList;}
                             }
                         }
 
