@@ -35,7 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TEMPERATURE = "TEMPERATURE";
     public static final String COLUMN_CONTAINMENT = "CONTAINMENT";
     public static final String COLUMN_ID = "ID";
-    List<CustomerModel> returnList= new ArrayList<>();
+    List<CustomerModel> returnListFinal= new ArrayList<>();
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "employee.db", null, 1);
@@ -120,7 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         mFirebase.collection("employees")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
+                    List<CustomerModel> returnList= new ArrayList<>();
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             int i=0;
@@ -152,14 +152,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                                         email, phone, symptoms, absence, overseas, contact, temp, visit);
                                 i++;
                                 returnList.add(newCustomer);
+                                Log.d("OKAY",returnList.toString());
+                                returnListFinal=returnList;
                             }
-                        } else {
+                        }
+
+                        else {
                             Log.w("unable to read", "Error getting documents.", task.getException());
                         }
+                        final List<CustomerModel> returnList = DataBaseHelper.this.returnListFinal;
                     }
                 });
-        return returnList;
+        return returnListFinal;
 
+    }
+    public List<CustomerModel> getFirestoreFinal(){
+        return returnListFinal;
     }
 
 }

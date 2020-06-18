@@ -12,6 +12,15 @@
             android:layout_height="match_parent"
             android:id="@+id/listView1" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/listView1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Show"
+            android:onClick="btnShow"/>
+
 
 
 
