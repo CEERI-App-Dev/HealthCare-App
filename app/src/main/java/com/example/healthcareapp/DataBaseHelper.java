@@ -5,11 +5,21 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -30,6 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "employee.db", null, 1);
     }
 
+    private FirebaseFirestore mFirebase = FirebaseFirestore.getInstance();
     // this is called the first time a database is accessed. There should be code in here to create a new database.
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -99,6 +110,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+
+    public List getFirestore(){
+        List<EmployeeModel> returnList= new ArrayList<>();
+        //final Map<String, Object>[] employees = new Map<String, Object>[1];
+        final EmployeeModel employeeModel = new EmployeeModel();
+        mFirebase.collection("employees")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                              //employeeModel[0] = (EmployeeModel) document.getData();
+                                Log.d("reading successful", document.getId() + " => " + document.getData());
+                                employeeModel.getCompany(document.getString("company"));
+                                employeeModel.getName(document.getString("name"));
+                                employeeModel.getEmail(document.getString("email"));
+                                employeeModel.getPhone(document.getString("phone"));
+                                employeeModel.isSymptoms(document.getBoolean("symptoms"));
+                                employeeModel.isAbsence(document.getBoolean("absence"));
+                                employeeModel.isOverseas(document.getBoolean("overseas"));
+                                employeeModel.isContact(document.getBoolean("contact"));
+                                employeeModel.getTemperature(document.getDouble("temperature"));
+                                employeeModel.setVisit(document.getBoolean("visit"));
+                            }
+                        } else {
+                            Log.w("unable to read", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        returnList.add(employeeModel);
+        return returnList;
+
     }
 
 }

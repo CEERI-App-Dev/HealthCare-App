@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 public class DisplayDataActivity extends Activity {
@@ -26,6 +29,7 @@ public class DisplayDataActivity extends Activity {
 
         ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(DisplayDataActivity.this, android.R.layout.simple_list_item_1, everyone);
         list.setAdapter(customerArrayAdapter);
+
 
     }
 }
