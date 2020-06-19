@@ -139,16 +139,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                                 Boolean contact = document.getBoolean("contact");
                                 Double temp = document.getDouble("temperature");
                                 Boolean visit = document.getBoolean("visit");
-//                                employeeModel.getCompany(document.getString("company"));
-//                                employeeModel.getName(document.getString("company"));
-//                                employeeModel.getEmail(document.getString("email"));
-//                                employeeModel.getPhone(document.getString("phone"));
-//                                employeeModel.isSymptoms(document.getBoolean("symptoms"));
-//                                employeeModel.isAbsence(document.getBoolean("absence"));
-//                                employeeModel.isOverseas(document.getBoolean("overseas"));
-//                                employeeModel.isContact(document.getBoolean("contact"));
-//                                employeeModel.getTemperature(document.getDouble("temperature"));
-//                                employeeModel.setVisit(document.getBoolean("visit"));
+
                                 CustomerModel newCustomer = new CustomerModel(employeeID, companyName, employeeName,
                                         email, phone, symptoms, absence, overseas, contact, temp, visit);
                                 i++;

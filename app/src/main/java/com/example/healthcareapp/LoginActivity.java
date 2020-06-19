@@ -1,5 +1,6 @@
 package com.example.healthcareapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -7,13 +8,21 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends FragmentActivity {
 
@@ -49,6 +58,25 @@ public class LoginActivity extends FragmentActivity {
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel =
+                    new NotificationChannel("MyNotification", "MyNotification", NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager manager =getSystemService(NotificationManager.class);
+                    manager.createNotificationChannel(channel);
+        }
+
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Successful";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+                        Log.d("sent notification", msg);
+                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 

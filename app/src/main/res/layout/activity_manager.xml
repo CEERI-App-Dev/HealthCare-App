@@ -76,25 +76,7 @@
 
         </Button>
 
-        <Button
-            android:id="@+id/ViewDatabase"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_margin="16dp"
-            android:onClick="btnFirebase"
-            android:text="View Database"
-            android:layout_gravity="center"
-            style="@style/Widget.MaterialComponents.Button"
-            android:background="@drawable/btn_rounded"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp">
 
-        </Button>
-
-        <ListView
-            android:id="@+id/listViewFirestore"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
 
 
