@@ -130,7 +130,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                                 int employeeID = i;
                                 String companyName = document.getString("company");
                                 if(company.equalsIgnoreCase(companyName)){
-                                String employeeName = document.getString("company");
+                                String employeeName = document.getString("name");
                                 String email = document.getString("email");
                                 String phone = document.getString("phone");
                                 Boolean symptoms = document.getBoolean("symptoms");

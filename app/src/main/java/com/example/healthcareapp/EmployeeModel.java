@@ -93,7 +93,7 @@ public class EmployeeModel {
         this.contact = contact;
     }
 
-    public long getTemperature(Double temperature) {
+    public long getTemperature(Long temperature) {
         return this.temperature;
     }
 
@@ -101,8 +101,8 @@ public class EmployeeModel {
         this.temperature = temperature;
     }
 
-    public boolean isVisit() {
-        return visit;
+    public boolean isVisit(Boolean visit) {
+        return this.visit;
     }
 
     public void setVisit(boolean visit) {
