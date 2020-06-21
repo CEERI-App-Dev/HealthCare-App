@@ -137,11 +137,11 @@ int check=1;
             if (symptoms1.isChecked() && contact1.isChecked() && containment1.isChecked())
                 Toast.makeText(EmployeeActivity.this,"You should work from home",Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(EmployeeActivity.this,customerModel.toString(),Toast.LENGTH_LONG).show();
+//        Toast.makeText(EmployeeActivity.this,customerModel.toString(),Toast.LENGTH_LONG).show();
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper(EmployeeActivity.this);
         boolean success = dataBaseHelper.addOne(customerModel);
-        Toast.makeText(EmployeeActivity.this,"Success="+success,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(EmployeeActivity.this,"Success="+success,Toast.LENGTH_SHORT).show();
 
         // Firebase data addition code.
         Map<String, Object> users = new HashMap<>();
@@ -161,13 +161,13 @@ int check=1;
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("success","DocumentSnapshot added with ID: "+documentReference.getId());
+//                        Log.d("success","DocumentSnapshot added with ID: "+documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("failure","Error adding document",e);
+//                        Log.w("failure","Error adding document",e);
                     }
                 });
 

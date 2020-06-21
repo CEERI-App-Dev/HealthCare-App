@@ -40,8 +40,12 @@ public class DisplayDataActivity extends Activity  {
 
         ArrayAdapter customerArrayAdapter = new ArrayAdapter<CustomerModel>(DisplayDataActivity.this, android.R.layout.simple_list_item_1, everyone);
         list.setAdapter(customerArrayAdapter);
-        registerForContextMenu(list);
-    }
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"HI",Toast.LENGTH_SHORT).show();
+            }
+        });    }
 
 
 
@@ -79,7 +83,7 @@ public class DisplayDataActivity extends Activity  {
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    registerForContextMenu(list);
+                    Toast.makeText(DisplayDataActivity.this,position,Toast.LENGTH_SHORT).show();
                 }
             });
 
