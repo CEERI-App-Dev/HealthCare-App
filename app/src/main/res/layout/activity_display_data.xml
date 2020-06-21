@@ -8,20 +8,22 @@
 
 
         <ListView
+            android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView1" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-36dp" />
+
 
         <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/listView1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="btnShow"
             android:text="Show"
-            android:onClick="btnShow"/>
-
-
+            app:layout_constraintBottom_toBottomOf="@id/listView1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

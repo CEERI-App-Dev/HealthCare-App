@@ -114,8 +114,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public List<CustomerModel> getFirestore(final String company){
-
-        //final Map<String, Object>[] employees = new Map<String, Object>[1];
         EmployeeModel employeeModel = new EmployeeModel();
         mFirebase.collection("employees")
                 .get()
@@ -125,7 +123,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                         if (task.isSuccessful()) {
                             int i=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                              //employeeModel[0] = (EmployeeModel) document.getData();
                                 Log.d("reading successful", document.getId() + " => " + document.getData());
                                 int employeeID = i;
                                 String companyName = document.getString("company");
