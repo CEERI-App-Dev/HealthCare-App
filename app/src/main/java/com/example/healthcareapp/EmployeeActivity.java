@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +39,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class EmployeeActivity extends Activity {
     private static final int REQUEST_IMAGE_CAPTURE =1;
@@ -58,13 +61,18 @@ public class EmployeeActivity extends Activity {
     }
 
     public void btnSave(View view) {
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void addToDatabase(View view){
         imageView=findViewById(R.id.Image);
         EditText company = findViewById(R.id.companyName);
         EditText name = findViewById(R.id.employeeName);
         EditText email = findViewById(R.id.emailName);
         EditText phone = findViewById(R.id.phoneNumber);
         EditText visit = findViewById(R.id.visitPlace);
-        EditText temperature = findViewById(R.id.temparatureFarenheit);
+        TextInputEditText temperature = findViewById(R.id.temparatureFarenheit);
         RadioGroup symptoms = findViewById(R.id.symptomsRadio);
         RadioGroup absence = findViewById(R.id.absenceRadio);
         RadioGroup overseas = findViewById(R.id.overseasRadio);
@@ -73,53 +81,46 @@ public class EmployeeActivity extends Activity {
         //used to check if a field added by user is empty
         // if (TextUtils.isEmpty(company.getText()))
         //with RadioGroup buttons we use getCheckedRadioButtonId() function
-
+int check=1;
         if (TextUtils.isEmpty(company.getText())){
-            company.setError("Company Name is required");
+            company.setError("Company Name is required");check=0;
         }
         if (TextUtils.isEmpty(name.getText())){
-            name.setError("Name is required");
+            name.setError("Name is required");check=0;
         }
         if (TextUtils.isEmpty(email.getText())){
-            email.setError("e-mail id is required");
+            email.setError("e-mail id is required");check=0;
         }
         if(TextUtils.isEmpty(phone.getText())){
-            phone.setError("Phone Number is required");
+            phone.setError("Phone Number is required");check=0;
         }
         if (TextUtils.isEmpty(temperature.getText())){
-            temperature.setError("Body Temperature is required.");
+            temperature.setError("Body Temperature is required.");check=0;
         }
         if (symptoms.getCheckedRadioButtonId()==-1){
-            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();check=0;
         }
         if (absence.getCheckedRadioButtonId()==-1){
-            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();check=0;
         }
         if (overseas.getCheckedRadioButtonId()==-1){
-            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();check=0;
         }
         if (contact.getCheckedRadioButtonId()==-1){
-            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();check=0;
         }
         if (containment.getCheckedRadioButtonId()==-1){
-            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the yes/no questions",Toast.LENGTH_SHORT).show();check=0;
         }
-    }
-
-    public void addToDatabase(View view){
-
         // variables
-        EditText company = findViewById(R.id.companyName);
-        EditText name = findViewById(R.id.employeeName);
-        EditText email = findViewById(R.id.emailName);
-        EditText phone = findViewById(R.id.phoneNumber);
+
         RadioButton symptoms1=findViewById(R.id.yesSymptom);
         RadioButton absence1=findViewById(R.id.yesAbsence);
         RadioButton overseas1=findViewById(R.id.yesOverseas);
         RadioButton contact1=findViewById(R.id.yesContact);
         RadioButton containment1= findViewById(R.id.yesContainment);
-        EditText temperature = findViewById(R.id.temparatureFarenheit);
-        Double temp = Double.parseDouble(temperature.getText().toString());
+        if(check==1){
+        double temp = Double.parseDouble(Objects.requireNonNull(temperature.getText()).toString());
 
         // SQLite database addition code.
         CustomerModel customerModel = new CustomerModel(1,company.getText().toString(),name.getText().toString(),
@@ -162,7 +163,7 @@ public class EmployeeActivity extends Activity {
 
         //.............................
 
-    }
+    }}
     private void selectImage() {
         Intent takeImageIntent = ImagePicker.getPickImageIntent(this);
         if (takeImageIntent.resolveActivity(this.getPackageManager()) != null) {
