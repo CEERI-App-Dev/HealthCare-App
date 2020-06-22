@@ -85,3 +85,4 @@ public class DisplayDataActivity extends Activity  {
 
         }
     }
+    // Code for triggering a notification through manager

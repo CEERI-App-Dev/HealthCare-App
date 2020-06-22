@@ -45,7 +45,7 @@ public class EmployeeActivity extends Activity {
     private static final int REQUEST_IMAGE_CAPTURE =1;
     ImageView imageView;
 
-    FirebaseFirestore mFirebase = FirebaseFirestore.getInstance();
+    FirebaseFirestore mFirebase;
     private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class EmployeeActivity extends Activity {
         final EditText email = findViewById(R.id.emailName);
         email.setText(message, TextView.BufferType.EDITABLE);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(EmployeeActivity.this);
+        mFirebase = FirebaseFirestore.getInstance();
 
     }
 
@@ -126,6 +127,15 @@ int check=1;
         CustomerModel customerModel = new CustomerModel(1,company.getText().toString(),name.getText().toString(),
                 email.getText().toString(),phone.getText().toString(),symptoms1.isChecked(),absence1.isChecked(),
                 overseas1.isChecked(),contact1.isChecked(),temp,containment1.isChecked());
+        if (!(symptoms1.isChecked() || overseas1.isChecked() || contact1.isChecked() || containment1.isChecked() || temp >100))
+            Toast.makeText(EmployeeActivity.this,"You can join office",Toast.LENGTH_SHORT).show();
+
+        // 100.5 is considered as high temperature
+        if(temp>100.5)
+            Toast.makeText(EmployeeActivity.this,"You should work from home",Toast.LENGTH_SHORT).show();
+
+            if (symptoms1.isChecked() && contact1.isChecked() && containment1.isChecked())
+                Toast.makeText(EmployeeActivity.this,"You should work from home",Toast.LENGTH_SHORT).show();
 
         Toast.makeText(EmployeeActivity.this,customerModel.toString(),Toast.LENGTH_LONG).show();
 
