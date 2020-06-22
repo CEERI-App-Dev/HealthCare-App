@@ -1,7 +1,9 @@
 package com.example.healthcareapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -43,7 +45,34 @@ import java.util.Objects;
 
 public class EmployeeActivity extends Activity {
     private static final int REQUEST_IMAGE_CAPTURE =1;
-    ImageView imageView;
+    private ImageView imageView;
+    private SharedPreferences userPreferences;
+    private String sharedPrefFile =
+            "com.example.android.hellosharedprefs";
+    private String nameShared;
+    private String companyShared;
+    private String phoneShared;
+    private boolean symptomsShared;
+    private boolean absenceShared;
+    private boolean overseasShared;
+    private boolean contactShared;
+    private boolean containmentShared;
+    private EditText company;
+    private EditText name ;
+    private EditText email ;
+    private EditText phone ;
+    private EditText visit ;
+    private TextInputEditText temperature ;
+    private RadioGroup symptoms;
+    private RadioGroup absence;
+    private RadioGroup overseas;
+    private RadioGroup contact;
+    private RadioGroup containment;
+    private RadioButton symptoms1;
+    private RadioButton absence1;
+    private RadioButton overseas1;
+    private RadioButton contact1;
+    private RadioButton containment1;
 
     FirebaseFirestore mFirebase;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -52,12 +81,51 @@ public class EmployeeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
 
+        company = findViewById(R.id.companyName);
+        name = findViewById(R.id.employeeName);
+        email = findViewById(R.id.emailName);
+        phone = findViewById(R.id.phoneNumber);
+        visit = findViewById(R.id.visitPlace);
+        temperature = findViewById(R.id.temparatureFarenheit);
+        symptoms = findViewById(R.id.symptomsRadio);
+        absence = findViewById(R.id.absenceRadio);
+        overseas = findViewById(R.id.overseasRadio);
+        contact = findViewById(R.id.contactRadio);
+        containment = findViewById(R.id.containmentRadio);
+        symptoms1=findViewById(R.id.yesSymptom);
+        absence1=findViewById(R.id.yesAbsence);
+        overseas1=findViewById(R.id.yesOverseas);
+        contact1=findViewById(R.id.yesContact);
+        containment1= findViewById(R.id.yesContainment);
+
+
+
+        userPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         Intent intent=getIntent();
         String message = intent.getStringExtra("email");
         final EditText email = findViewById(R.id.emailName);
         email.setText(message, TextView.BufferType.EDITABLE);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(EmployeeActivity.this);
         mFirebase = FirebaseFirestore.getInstance();
+        if (userPreferences!=null) {
+            nameShared=userPreferences.getString("name","");
+            companyShared=userPreferences.getString("company","");
+            phoneShared=userPreferences.getString("phone","");
+            symptomsShared=userPreferences.getBoolean("symptoms",false);
+            absenceShared=userPreferences.getBoolean("absence",false);
+            overseasShared=userPreferences.getBoolean("overseas",false);
+            contactShared=userPreferences.getBoolean("contact",false);
+            containmentShared=userPreferences.getBoolean("containment",false);
+            name.setText(nameShared);
+            company.setText(companyShared);
+            phone.setText(phoneShared);
+            symptoms1.setChecked(symptomsShared);
+            absence1.setChecked(absenceShared);
+            overseas1.setChecked(overseasShared);
+            contact1.setChecked(contactShared);
+            containment1.setChecked(containmentShared);
+        }
+
 
     }
 
@@ -68,19 +136,26 @@ public class EmployeeActivity extends Activity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void addToDatabase(View view){
         imageView=findViewById(R.id.Image);
-        EditText company = findViewById(R.id.companyName);
-        EditText name = findViewById(R.id.employeeName);
-        EditText email = findViewById(R.id.emailName);
-        EditText phone = findViewById(R.id.phoneNumber);
-        EditText visit = findViewById(R.id.visitPlace);
-        TextInputEditText temperature = findViewById(R.id.temparatureFarenheit);
-        RadioGroup symptoms = findViewById(R.id.symptomsRadio);
-        RadioGroup absence = findViewById(R.id.absenceRadio);
-        RadioGroup overseas = findViewById(R.id.overseasRadio);
-        RadioGroup contact = findViewById(R.id.contactRadio);
-        RadioGroup containment = findViewById(R.id.containmentRadio);
         //used to check if a field added by user is empty
         // if (TextUtils.isEmpty(company.getText()))
+        company = findViewById(R.id.companyName);
+        name = findViewById(R.id.employeeName);
+        email = findViewById(R.id.emailName);
+        phone = findViewById(R.id.phoneNumber);
+        visit = findViewById(R.id.visitPlace);
+        temperature = findViewById(R.id.temparatureFarenheit);
+        symptoms = findViewById(R.id.symptomsRadio);
+        absence = findViewById(R.id.absenceRadio);
+        overseas = findViewById(R.id.overseasRadio);
+        contact = findViewById(R.id.contactRadio);
+        containment = findViewById(R.id.containmentRadio);
+        symptoms1=findViewById(R.id.yesSymptom);
+        absence1=findViewById(R.id.yesAbsence);
+        overseas1=findViewById(R.id.yesOverseas);
+        contact1=findViewById(R.id.yesContact);
+        containment1= findViewById(R.id.yesContainment);
+
+
         //with RadioGroup buttons we use getCheckedRadioButtonId() function
 int check=1;
         if (TextUtils.isEmpty(company.getText())){
@@ -115,13 +190,19 @@ int check=1;
         }
         // variables
 
-        RadioButton symptoms1=findViewById(R.id.yesSymptom);
-        RadioButton absence1=findViewById(R.id.yesAbsence);
-        RadioButton overseas1=findViewById(R.id.yesOverseas);
-        RadioButton contact1=findViewById(R.id.yesContact);
-        RadioButton containment1= findViewById(R.id.yesContainment);
+
         if(check==1){
         double temp = Double.parseDouble(Objects.requireNonNull(temperature.getText()).toString());
+
+
+        nameShared=name.getText().toString();
+        companyShared=company.getText().toString();
+        phoneShared=phone.getText().toString();
+        symptomsShared=symptoms1.isChecked();
+        absenceShared=absence1.isChecked();
+        overseasShared=overseas1.isChecked();
+        contactShared=contact1.isChecked();
+        containmentShared=containment1.isChecked();
 
         // SQLite database addition code.
         CustomerModel customerModel = new CustomerModel(1,company.getText().toString(),name.getText().toString(),
@@ -194,4 +275,36 @@ int check=1;
     public void btnAddImage(View view) {
             selectImage();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor preferencesEditor = userPreferences.edit();
+        preferencesEditor.putString("name",nameShared);
+        preferencesEditor.putString("company",companyShared);
+        preferencesEditor.putString("phone",phoneShared);
+        preferencesEditor.putBoolean("symptoms",symptomsShared);
+        preferencesEditor.putBoolean("absence",absenceShared);
+        preferencesEditor.putBoolean("overseas",overseasShared);
+        preferencesEditor.putBoolean("contact",contactShared);
+        preferencesEditor.putBoolean("containment",containmentShared);
+        preferencesEditor.apply();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences.Editor preferencesEditor = userPreferences.edit();
+        preferencesEditor.putString("name",nameShared);
+        preferencesEditor.putString("company",companyShared);
+        preferencesEditor.putString("phone",phoneShared);
+        preferencesEditor.putBoolean("symptoms",symptomsShared);
+        preferencesEditor.putBoolean("absence",absenceShared);
+        preferencesEditor.putBoolean("overseas",overseasShared);
+        preferencesEditor.putBoolean("contact",contactShared);
+        preferencesEditor.putBoolean("containment",containmentShared);
+        preferencesEditor.apply();
+
+    }
 }
+
