@@ -16,5 +16,6 @@ Two Options:
 
 ## Firebase Console
 https://console.firebase.google.com/project/health-care-final/overview
-Cloud Database of Project.
+###
+Link to Project's Database
 
