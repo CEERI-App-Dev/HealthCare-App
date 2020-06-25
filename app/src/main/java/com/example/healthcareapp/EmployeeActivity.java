@@ -93,7 +93,9 @@ public class EmployeeActivity extends Activity {
         contact = findViewById(R.id.contactRadio);
         containment = findViewById(R.id.containmentRadio);
         symptoms1=findViewById(R.id.yesSymptom);
+        symptoms=findViewById(R.id.symptomsRadio);
         absence1=findViewById(R.id.yesAbsence);
+        
         overseas1=findViewById(R.id.yesOverseas);
         contact1=findViewById(R.id.yesContact);
         containment1= findViewById(R.id.yesContainment);
@@ -242,17 +244,19 @@ int check=1;
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-//                        Log.d("success","DocumentSnapshot added with ID: "+documentReference.getId());
+                        Log.d("success","DocumentSnapshot added with ID: "+documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-//                        Log.w("failure","Error adding document",e);
+                        Log.w("failure","Error adding document",e);
                     }
                 });
 
         //.............................
+            Intent i = new Intent(this,LoginActivity.class);
+            startActivity(i);
 
     }}
     private void selectImage() {

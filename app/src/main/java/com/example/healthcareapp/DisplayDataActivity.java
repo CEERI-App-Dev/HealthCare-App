@@ -48,7 +48,6 @@ public class DisplayDataActivity extends Activity  {
         });    }
 
 
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -72,6 +71,7 @@ public class DisplayDataActivity extends Activity  {
                 return super.onContextItemSelected(item);
         }
     }
+
 
 
         public void btnShow (View view){
