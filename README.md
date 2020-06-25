@@ -6,6 +6,7 @@ HealthCare-App would help company decide which employees should work in office a
 Install Android Studio on your PC.
 Set Up VCS on it and add github. 
 Then Clone this project. 
+Firebase plugins must be added.
 
 ## Running the App
 Two Options:
@@ -22,3 +23,5 @@ Link to Project's Database
 ## Contributing
 Pull requests are welcome. For test purposes this project has been kept private. 
 
+## Purpose
+This app is useful for companies in the backdrop of COVID-19 global pandemic to efficiently manage employees. Firebase implementation as well local databases are included, This app can easily be modified for each company/individual's purposes easily with their very own firebase console. Parameters taken into consideration are daily temperature, containment areas, overseas visit, etc. An additional facility for Manager/HR to view employee conditions has also been made available.
