@@ -24,4 +24,4 @@ Link to Project's Database
 Pull requests are welcome. For test purposes this project has been kept private. 
 
 ## Purpose
-This app is useful for companies in the backdrop of COVID-19 global pandemic to efficiently manage employees. Firebase implementation as well local databases are included, This app can easily be modified for each company/individual's purposes easily with their very own firebase console. Parameters taken into consideration are daily temperature, containment areas, overseas visit, etc. An additional facility for Manager/HR to view employee conditions has also been made available.
+This app is useful for companies in the backdrop of COVID-19 global pandemic to efficiently manage employees. Local Database as well as Firebase Firestore is implemented in it. This app can easily be modified for each company/individual's purposes easily with their own firebase console. Parameters taken into consideration are daily body temperature, containment areas, overseas travel, came in contact with a CoVid Patient, etc. An additional facility for Manager/HR to view employee conditions has also been made available.
