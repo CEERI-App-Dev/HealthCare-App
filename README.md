@@ -19,3 +19,6 @@ https://console.firebase.google.com/project/health-care-final/overview
 ###
 Link to Project's Database
 
+## Contributing
+Pull requests are welcome. For test purposes this project has been kept private. 
+
